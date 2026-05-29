@@ -1,0 +1,326 @@
+{
+  "module_1": {
+    "size": 32,
+    "type": "louvain",
+    "members": [
+      "Acetobacterium.1",
+      "Dethiobacteraceae.1",
+      "Mesotoga_infera.2",
+      "Methanobacterium_beijingense.11",
+      "Methanobacterium_beijingense.17",
+      "Methanospirillum_hungatei.1",
+      "Methanothrix_harundinacea.3",
+      "Thermovirga.3",
+      "Thermovirga.4",
+      "midas_g_1092.1",
+      "midas_s_101116.1",
+      "midas_s_1625.1",
+      "midas_s_20752.1",
+      "midas_s_22737.1",
+      "midas_s_2277.1",
+      "midas_s_25887.1",
+      "midas_s_3006.1",
+      "midas_s_3679.1",
+      "midas_s_38974.2",
+      "midas_s_40737.1",
+      "midas_s_46586.2",
+      "midas_s_538.1",
+      "midas_s_5574.1",
+      "midas_s_57020.1",
+      "midas_s_83426.1",
+      "midas_s_84394.1",
+      "midas_s_84394.2",
+      "midas_s_90665.1",
+      "midas_s_91084.1",
+      "midas_s_92454.1",
+      "midas_s_94423.1",
+      "midas_s_94642.1"
+    ]
+  },
+  "module_2": {
+    "size": 24,
+    "type": "louvain",
+    "members": [
+      "Aminivibrio_pyruvatiphilus.1",
+      "Bellilinea_caldifistulae.1",
+      "Comamonadaceae.1",
+      "Desulfovibrio.1",
+      "Desulfovibrio_aminophilus.1",
+      "Desulfovibrio_sulfodismutans.1",
+      "Endomicrobium.1",
+      "Mesotoga_infera.1",
+      "Methanobacterium.1",
+      "Methanobacterium_beijingense.1",
+      "Petrimonas_sulfuriphila.1",
+      "Propionicicella.1",
+      "Soehngenia.1",
+      "midas_g_1743.1",
+      "midas_s_101322.1",
+      "midas_s_14202.1",
+      "midas_s_18280.1",
+      "midas_s_22101.1",
+      "midas_s_269.1",
+      "midas_s_360.1",
+      "midas_s_5149.1",
+      "midas_s_819.1",
+      "midas_s_825.1",
+      "midas_s_876.1"
+    ]
+  },
+  "module_3": {
+    "size": 14,
+    "type": "louvain",
+    "members": [
+      "Acetoanaerobium.1",
+      "EBM-39.1",
+      "Lentimicrobium.1",
+      "Methanobacteriaceae.1",
+      "midas_g_824.1",
+      "midas_s_102854.1",
+      "midas_s_114539.1",
+      "midas_s_119364.1",
+      "midas_s_1571.1",
+      "midas_s_32633.1",
+      "midas_s_38974.1",
+      "midas_s_5996.1",
+      "midas_s_8128.1",
+      "midas_s_99172.1"
+    ]
+  },
+  "module_4": {
+    "size": 10,
+    "type": "louvain",
+    "members": [
+      "Bacteria.8",
+      "Methanosarcina.3",
+      "Thermovirga.2",
+      "midas_g_58386.1",
+      "midas_s_100693.1",
+      "midas_s_13170.1",
+      "midas_s_531.2",
+      "midas_s_76790.1",
+      "midas_s_79195.1",
+      "midas_s_94642.3"
+    ]
+  },
+  "module_5": {
+    "size": 6,
+    "type": "louvain",
+    "members": [
+      "Christensenellaceae.3",
+      "Proteiniclasticum_ruminis.1",
+      "midas_s_116071.1",
+      "midas_s_2408.1",
+      "midas_s_95007.1",
+      "midas_s_99373.1"
+    ]
+  },
+  "module_6": {
+    "size": 5,
+    "type": "louvain",
+    "members": [
+      "Romboutsia_lituseburensis.1",
+      "Syntrophus_buswellii.1",
+      "midas_g_1469.1",
+      "midas_s_41.1",
+      "midas_s_44508.1"
+    ]
+  },
+  "module_7": {
+    "size": 5,
+    "type": "louvain",
+    "members": [
+      "Burkholderiales.1",
+      "LNR_A2-18.3",
+      "Peptostreptococcales-Tissierellales.1",
+      "midas_s_21122.1",
+      "midas_s_82500.1"
+    ]
+  },
+  "module_8": {
+    "size": 5,
+    "type": "louvain",
+    "members": [
+      "Syntrophorhabdus.2",
+      "midas_s_14041.1",
+      "midas_s_52426.1",
+      "midas_s_59647.1",
+      "midas_s_99362.1"
+    ]
+  },
+  "minor_1": {
+    "size": 2,
+    "type": "minor",
+    "members": [
+      "Ca_Caldatribacterium.1",
+      "midas_s_84729.1"
+    ]
+  },
+  "minor_2": {
+    "size": 3,
+    "type": "minor",
+    "members": [
+      "Firmicutes.1",
+      "LNR_A2-18.1",
+      "LNR_A2-18.2"
+    ]
+  },
+  "minor_3": {
+    "size": 2,
+    "type": "minor",
+    "members": [
+      "Firmicutes.2",
+      "midas_s_93169.1"
+    ]
+  },
+  "minor_4": {
+    "size": 2,
+    "type": "minor",
+    "members": [
+      "Methanosarcina.1",
+      "Stappia.1"
+    ]
+  },
+  "minor_5": {
+    "size": 3,
+    "type": "minor",
+    "members": [
+      "Methanothrix.1",
+      "midas_s_3064.1",
+      "midas_s_49937.1"
+    ]
+  },
+  "minor_6": {
+    "size": 2,
+    "type": "minor",
+    "members": [
+      "Pirellulaceae.1",
+      "Thiobacillus.1"
+    ]
+  },
+  "minor_7": {
+    "size": 2,
+    "type": "minor",
+    "members": [
+      "Terrisporobacter.1",
+      "midas_s_76151.1"
+    ]
+  },
+  "minor_8": {
+    "size": 3,
+    "type": "minor",
+    "members": [
+      "midas_s_46586.1",
+      "midas_s_531.1",
+      "midas_s_78044.1"
+    ]
+  },
+  "minor_9": {
+    "size": 2,
+    "type": "minor",
+    "members": [
+      "Azoarcus.1",
+      "Dethiobacter.1"
+    ]
+  },
+  "minor_10": {
+    "size": 2,
+    "type": "minor",
+    "members": [
+      "midas_s_33235.1",
+      "midas_s_84837.2"
+    ]
+  },
+  "minor_11": {
+    "size": 2,
+    "type": "minor",
+    "members": [
+      "Acidipropionibacterium.1",
+      "midas_s_38379.1"
+    ]
+  },
+  "minor_12": {
+    "size": 3,
+    "type": "minor",
+    "members": [
+      "Desulfitibacter.1",
+      "Methanobacterium_beijingense.2",
+      "Syntrophomonas.2"
+    ]
+  },
+  "minor_13": {
+    "size": 2,
+    "type": "minor",
+    "members": [
+      "Leucobacter.1",
+      "Soehngenia.2"
+    ]
+  },
+  "minor_14": {
+    "size": 2,
+    "type": "minor",
+    "members": [
+      "midas_g_97738.1",
+      "midas_s_57644.1"
+    ]
+  },
+  "minor_15": {
+    "size": 2,
+    "type": "minor",
+    "members": [
+      "midas_s_42539.1",
+      "midas_s_91583.1"
+    ]
+  },
+  "minor_16": {
+    "size": 2,
+    "type": "minor",
+    "members": [
+      "Syntrophobacter_sulfatireducens.1",
+      "midas_s_26433.1"
+    ]
+  },
+  "minor_17": {
+    "size": 2,
+    "type": "minor",
+    "members": [
+      "midas_s_1977.1",
+      "midas_s_5446.3"
+    ]
+  },
+  "minor_18": {
+    "size": 2,
+    "type": "minor",
+    "members": [
+      "midas_s_3702.2",
+      "midas_s_90473.1"
+    ]
+  },
+  "minor_19": {
+    "size": 4,
+    "type": "minor",
+    "members": [
+      "Desulfovibrio.2",
+      "Methanobacterium_beijingense.3",
+      "midas_s_22225.1",
+      "midas_s_95280.1"
+    ]
+  },
+  "minor_20": {
+    "size": 2,
+    "type": "minor",
+    "members": [
+      "Thauera.1",
+      "midas_g_72899.1"
+    ]
+  },
+  "minor_21": {
+    "size": 3,
+    "type": "minor",
+    "members": [
+      "midas_s_260.1",
+      "midas_s_90394.1",
+      "midas_s_98252.1"
+    ]
+  }
+}
