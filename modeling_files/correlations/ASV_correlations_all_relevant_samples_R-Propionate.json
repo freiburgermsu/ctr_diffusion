@@ -1,0 +1,682 @@
+{
+  "Xanthobacter.1": {
+    "correlation": -0.6477881236960785,
+    "p_value": 0.02274123694585962
+  },
+  "midas_s_112429.1": {
+    "correlation": -0.6421757312657811,
+    "p_value": 0.02434788424413667
+  },
+  "midas_s_32633.1": {
+    "correlation": -0.5793999346841758,
+    "p_value": 0.04834288814470418
+  },
+  "Pseudarcobacter.1": {
+    "correlation": -0.5663409849321314,
+    "p_value": 0.05489060723888584
+  },
+  "midas_s_22101.1": {
+    "correlation": -0.5197433089567027,
+    "p_value": 0.0832797546168882
+  },
+  "midas_s_4976.1": {
+    "correlation": -0.5103367236747383,
+    "p_value": 0.09002616794506933
+  },
+  "Methanobacterium_beijingense.11": {
+    "correlation": 0.5054347826086957,
+    "p_value": 0.09368389473728203
+  },
+  "midas_s_46918.1": {
+    "correlation": -0.5054180953424848,
+    "p_value": 0.09369651439334968
+  },
+  "Sulfuricurvum.1": {
+    "correlation": -0.5039839843758827,
+    "p_value": 0.09478532993157389
+  },
+  "Desulfuromonadaceae.1": {
+    "correlation": -0.49560745356531316,
+    "p_value": 0.10131507671207639
+  },
+  "midas_s_94642.1": {
+    "correlation": 0.49560745356531316,
+    "p_value": 0.10131507671207639
+  },
+  "Sphingopyxis.2": {
+    "correlation": 0.492156500946671,
+    "p_value": 0.10409040317153818
+  },
+  "midas_s_27766.1": {
+    "correlation": 0.492156500946671,
+    "p_value": 0.10409040317153818
+  },
+  "midas_s_59647.1": {
+    "correlation": -0.49011535458530286,
+    "p_value": 0.10575554621045616
+  },
+  "EBM-39.1": {
+    "correlation": -0.48762168353465085,
+    "p_value": 0.10781378947844335
+  },
+  "Methanosarcina.1": {
+    "correlation": 0.48050311881151725,
+    "p_value": 0.11383520218422853
+  },
+  "midas_s_7659.1": {
+    "correlation": -0.4701027081153191,
+    "p_value": 0.12302541729598333
+  },
+  "midas_s_49937.1": {
+    "correlation": -0.4662659893652501,
+    "p_value": 0.12653478790347403
+  },
+  "Methanobacterium_beijingense.2": {
+    "correlation": 0.45202885991898284,
+    "p_value": 0.14012598554737313
+  },
+  "Syntrophomonas.2": {
+    "correlation": 0.4465704797882731,
+    "p_value": 0.1455767984959098
+  },
+  "midas_s_269.1": {
+    "correlation": -0.4444701400733183,
+    "p_value": 0.1477099901704543
+  },
+  "Romboutsia_lituseburensis.1": {
+    "correlation": -0.4354984844216217,
+    "p_value": 0.15704707615514332
+  },
+  "Methanosarcina.3": {
+    "correlation": 0.43410385208847035,
+    "p_value": 0.15853141263394513
+  },
+  "midas_s_56159.1": {
+    "correlation": -0.41999531866488177,
+    "p_value": 0.17404880649770288
+  },
+  "Enterobacteriaceae.1": {
+    "correlation": 0.417045158810536,
+    "p_value": 0.17740948611098248
+  },
+  "Syntrophorhabdus.1": {
+    "correlation": 0.4166666666666667,
+    "p_value": 0.17784356005137417
+  },
+  "Desulfovibrio.1": {
+    "correlation": -0.4128767539417481,
+    "p_value": 0.18222661714109553
+  },
+  "midas_s_96664.1": {
+    "correlation": -0.3701653656029466,
+    "p_value": 0.23625381662633566
+  },
+  "midas_f_46203.1": {
+    "correlation": -0.34194094505951356,
+    "p_value": 0.2766383920159304
+  },
+  "Methanobacterium_beijingense.1": {
+    "correlation": -0.3416911067104122,
+    "p_value": 0.2770124343824631
+  },
+  "midas_s_116071.1": {
+    "correlation": -0.3400412731425163,
+    "p_value": 0.27948972377470743
+  },
+  "midas_s_84394.1": {
+    "correlation": -0.3400412731425163,
+    "p_value": 0.27948972377470743
+  },
+  "midas_s_70352.1": {
+    "correlation": 0.3366951828393502,
+    "p_value": 0.2845526979544295
+  },
+  "Mesotoga_infera.1": {
+    "correlation": -0.3310132596257119,
+    "p_value": 0.2932684573809873
+  },
+  "midas_s_91638.1": {
+    "correlation": 0.3297681684414942,
+    "p_value": 0.29519822211720204
+  },
+  "midas_s_93835.1": {
+    "correlation": 0.32745397726414505,
+    "p_value": 0.2988039068232815
+  },
+  "midas_s_99362.1": {
+    "correlation": -0.3238946949025783,
+    "p_value": 0.3043974704848051
+  },
+  "Desulfovibrio_sulfodismutans.1": {
+    "correlation": -0.3115461943875569,
+    "p_value": 0.3242515320331365
+  },
+  "midas_s_5446.3": {
+    "correlation": -0.3056133110717231,
+    "p_value": 0.33403591568118696
+  },
+  "midas_s_52426.1": {
+    "correlation": -0.30394750671956766,
+    "p_value": 0.3368115491927308
+  },
+  "Soehngenia.1": {
+    "correlation": -0.3025362318840579,
+    "p_value": 0.33917279029858927
+  },
+  "midas_s_22225.1": {
+    "correlation": 0.3016443070318306,
+    "p_value": 0.340669681330526
+  },
+  "midas_s_8128.1": {
+    "correlation": -0.2989797183716107,
+    "p_value": 0.34516270049911857
+  },
+  "midas_s_46586.1": {
+    "correlation": 0.29444914713458115,
+    "p_value": 0.35287451145966753
+  },
+  "midas_s_40737.1": {
+    "correlation": 0.2925494752175839,
+    "p_value": 0.3561350857808975
+  },
+  "midas_s_84729.1": {
+    "correlation": 0.29186115364847715,
+    "p_value": 0.3573204374373701
+  },
+  "Clostridium_citroniae.1": {
+    "correlation": 0.28830187128691037,
+    "p_value": 0.3634830473605587
+  },
+  "midas_s_3064.1": {
+    "correlation": -0.2831704924660657,
+    "p_value": 0.37246508335277606
+  },
+  "midas_s_79195.1": {
+    "correlation": 0.2694185539218507,
+    "p_value": 0.39709713717312556
+  },
+  "Syner-01.2": {
+    "correlation": 0.2633868947559428,
+    "p_value": 0.40815452366975424
+  },
+  "midas_s_99172.1": {
+    "correlation": 0.2567175299043349,
+    "p_value": 0.4205578916612952
+  },
+  "Methanobacterium_beijingense.3": {
+    "correlation": 0.2562683300328092,
+    "p_value": 0.4213999085391852
+  },
+  "midas_s_42539.1": {
+    "correlation": -0.25465589343298217,
+    "p_value": 0.4244292250599663
+  },
+  "Christensenellaceae_R-7_group.1": {
+    "correlation": 0.25315200865566356,
+    "p_value": 0.4272642115008456
+  },
+  "Mesotoga_infera.2": {
+    "correlation": 0.2455904829481088,
+    "p_value": 0.4416578806503746
+  },
+  "Desulfitibacter.1": {
+    "correlation": 0.24456521739130438,
+    "p_value": 0.4436272698531898
+  },
+  "Petrimonas_sulfuriphila.1": {
+    "correlation": -0.24374168971762614,
+    "p_value": 0.4452121960621732
+  },
+  "midas_s_101116.1": {
+    "correlation": 0.24374168971762614,
+    "p_value": 0.4452121960621732
+  },
+  "Leptonema_illini.1": {
+    "correlation": 0.23935866154165952,
+    "p_value": 0.45369300959300474
+  },
+  "midas_s_5446.2": {
+    "correlation": -0.23935866154165952,
+    "p_value": 0.45369300959300474
+  },
+  "midas_s_14041.1": {
+    "correlation": -0.2384719182249752,
+    "p_value": 0.4554180404622181
+  },
+  "midas_s_18280.1": {
+    "correlation": -0.2384719182249752,
+    "p_value": 0.4554180404622181
+  },
+  "Ochrobactrum.1": {
+    "correlation": 0.23354164178797132,
+    "p_value": 0.4650654536025426
+  },
+  "midas_s_141.1": {
+    "correlation": 0.23251190269967936,
+    "p_value": 0.4670923825269505
+  },
+  "midas_s_30888.1": {
+    "correlation": -0.23020223431376544,
+    "p_value": 0.4716536365236399
+  },
+  "Endomicrobium.1": {
+    "correlation": -0.22779407114027483,
+    "p_value": 0.47643126635631095
+  },
+  "midas_s_3679.1": {
+    "correlation": 0.22423478877870803,
+    "p_value": 0.48353318185867333
+  },
+  "Methanothrix_harundinacea.3": {
+    "correlation": 0.22223507003665915,
+    "p_value": 0.4875443173413987
+  },
+  "midas_s_5996.1": {
+    "correlation": -0.22067550641714126,
+    "p_value": 0.49068300396895215
+  },
+  "Methanobacterium.1": {
+    "correlation": -0.21711622405557449,
+    "p_value": 0.4978802084921985
+  },
+  "midas_s_1625.1": {
+    "correlation": 0.21276325470369736,
+    "p_value": 0.506745950319663
+  },
+  "midas_s_9526.1": {
+    "correlation": 0.20643837697087405,
+    "p_value": 0.5197507165228195
+  },
+  "midas_s_360.1": {
+    "correlation": -0.20643837697087405,
+    "p_value": 0.5197507165228195
+  },
+  "midas_s_98644.2": {
+    "correlation": 0.200890717794269,
+    "p_value": 0.5312749751046416
+  },
+  "Halothiobacillus_neapolitanus.1": {
+    "correlation": 0.19931981224774048,
+    "p_value": 0.534557886000188
+  },
+  "Azoarcus.1": {
+    "correlation": -0.1984502019946254,
+    "p_value": 0.536378905955065
+  },
+  "Petrimonas_sulfuriphila.2": {
+    "correlation": 0.18996719169972978,
+    "p_value": 0.5542789261066405
+  },
+  "midas_g_75908.1": {
+    "correlation": -0.1865942028985507,
+    "p_value": 0.561463711765599
+  },
+  "Burkholderiales.1": {
+    "correlation": -0.1863907039017141,
+    "p_value": 0.5618983912240416
+  },
+  "midas_s_57644.2": {
+    "correlation": 0.1861678478657352,
+    "p_value": 0.5623745746341526
+  },
+  "midas_s_114539.1": {
+    "correlation": -0.18236850403174057,
+    "p_value": 0.5705178164974651
+  },
+  "Methanobacteriaceae.1": {
+    "correlation": -0.18152340043990653,
+    "p_value": 0.5723355445472903
+  },
+  "midas_s_20752.1": {
+    "correlation": 0.18084259098863953,
+    "p_value": 0.5738015725374633
+  },
+  "LNR_A2-18.3": {
+    "correlation": 0.17860518179516285,
+    "p_value": 0.5786300160538824
+  },
+  "midas_s_531.2": {
+    "correlation": -0.17066717371537787,
+    "p_value": 0.5958883827810642
+  },
+  "Acetoanaerobium.1": {
+    "correlation": -0.16728627099363932,
+    "p_value": 0.603298209716268
+  },
+  "Syntrophobacter_sulfatireducens.1": {
+    "correlation": 0.16372698863207252,
+    "p_value": 0.611136331652682
+  },
+  "midas_s_25887.1": {
+    "correlation": 0.16372698863207252,
+    "p_value": 0.611136331652682
+  },
+  "midas_s_47294.4": {
+    "correlation": -0.16238926537755385,
+    "p_value": 0.6140919850632736
+  },
+  "midas_s_21122.1": {
+    "correlation": -0.16016770627050572,
+    "p_value": 0.619012091466582
+  },
+  "midas_s_825.1": {
+    "correlation": -0.1577152109937581,
+    "p_value": 0.6244603650621302
+  },
+  "Desulfovibrio_aminophilus.1": {
+    "correlation": -0.15660842390893895,
+    "p_value": 0.6269248019462761
+  },
+  "midas_s_102854.1": {
+    "correlation": -0.15660842390893895,
+    "p_value": 0.6269248019462761
+  },
+  "midas_s_91583.1": {
+    "correlation": -0.15660842390893895,
+    "p_value": 0.6269248019462761
+  },
+  "midas_s_31096.1": {
+    "correlation": -0.1541307743802636,
+    "p_value": 0.6324543579657889
+  },
+  "midas_s_26433.1": {
+    "correlation": 0.1508221535159153,
+    "p_value": 0.6398654384113323
+  },
+  "midas_s_93169.1": {
+    "correlation": -0.1503481634062507,
+    "p_value": 0.6409296409388694
+  },
+  "midas_s_57020.1": {
+    "correlation": -0.15007408144278653,
+    "p_value": 0.6415452931633803
+  },
+  "Thiobacillus.1": {
+    "correlation": 0.14796913181985968,
+    "p_value": 0.6462803875344187
+  },
+  "Ca_Caldatribacterium.1": {
+    "correlation": 0.14593057682423857,
+    "p_value": 0.6508776410237396
+  },
+  "midas_s_82500.1": {
+    "correlation": -0.1433774645397801,
+    "p_value": 0.6566510707585318
+  },
+  "midas_s_92454.1": {
+    "correlation": -0.14083808932251704,
+    "p_value": 0.6624105856397847
+  },
+  "Methanobacterium_beijingense.4": {
+    "correlation": 0.1316934473779714,
+    "p_value": 0.683288954948474
+  },
+  "midas_s_101322.1": {
+    "correlation": -0.13097713331645275,
+    "p_value": 0.6849332435421884
+  },
+  "midas_s_91084.1": {
+    "correlation": -0.12700812927656027,
+    "p_value": 0.6940666290200121
+  },
+  "midas_s_84837.3": {
+    "correlation": -0.12281962644454282,
+    "p_value": 0.7037457818537647
+  },
+  "Stappia.1": {
+    "correlation": 0.12101560029327099,
+    "p_value": 0.7079272414616193
+  },
+  "LNR_A2-18.1": {
+    "correlation": -0.12101560029327099,
+    "p_value": 0.7079272414616193
+  },
+  "Aminivibrio_pyruvatiphilus.1": {
+    "correlation": -0.1174563179317042,
+    "p_value": 0.7161987790510422
+  },
+  "Dethiobacter.1": {
+    "correlation": -0.11050724637681161,
+    "p_value": 0.7324282291719526
+  },
+  "Methanobacterium_formicicum.1": {
+    "correlation": -0.11033775320857063,
+    "p_value": 0.7328253667197191
+  },
+  "Dethiobacteraceae.1": {
+    "correlation": 0.11033775320857063,
+    "p_value": 0.7328253667197191
+  },
+  "midas_s_96264.1": {
+    "correlation": -0.11033775320857063,
+    "p_value": 0.7328253667197191
+  },
+  "Pirellulaceae.1": {
+    "correlation": 0.10321918848543703,
+    "p_value": 0.749558052467047
+  },
+  "Methanothrix.1": {
+    "correlation": -0.09965990612387024,
+    "p_value": 0.7579621900716275
+  },
+  "midas_s_114924.1": {
+    "correlation": -0.0992251009973127,
+    "p_value": 0.7589905167115153
+  },
+  "Gordonia.1": {
+    "correlation": 0.09805183433846124,
+    "p_value": 0.7617671108841257
+  },
+  "Acetobacterium.1": {
+    "correlation": 0.09610062376230345,
+    "p_value": 0.7663904501947998
+  },
+  "midas_s_114219.1": {
+    "correlation": -0.09610062376230345,
+    "p_value": 0.7663904501947998
+  },
+  "Firmicutes.2": {
+    "correlation": 0.09610062376230345,
+    "p_value": 0.7663904501947998
+  },
+  "Comamonadaceae.1": {
+    "correlation": -0.09525609695742018,
+    "p_value": 0.7683937131261852
+  },
+  "Proteiniborus_ethanoligenes.1": {
+    "correlation": 0.09525609695742018,
+    "p_value": 0.7683937131261852
+  },
+  "Thermovirga.4": {
+    "correlation": 0.0934375431601251,
+    "p_value": 0.7727118247704243
+  },
+  "midas_s_47294.1": {
+    "correlation": 0.0930839239328676,
+    "p_value": 0.7735521765623825
+  },
+  "Soehngenia.2": {
+    "correlation": -0.089284580098873,
+    "p_value": 0.7825949763455782
+  },
+  "Methanobacterium_beijingense.17": {
+    "correlation": 0.08876811594202899,
+    "p_value": 0.7838261449915834
+  },
+  "midas_s_78044.1": {
+    "correlation": 0.08876811594202899,
+    "p_value": 0.7838261449915834
+  },
+  "midas_s_22737.1": {
+    "correlation": 0.08334908483774267,
+    "p_value": 0.7967712201035909
+  },
+  "midas_g_58386.1": {
+    "correlation": -0.07830421195446947,
+    "p_value": 0.8088649739542917
+  },
+  "midas_s_84394.2": {
+    "correlation": -0.07788654859688922,
+    "p_value": 0.8098679709689367
+  },
+  "midas_s_113358.1": {
+    "correlation": -0.07527316888338455,
+    "p_value": 0.8161497768869304
+  },
+  "Lentimicrobium.1": {
+    "correlation": 0.07474492959290267,
+    "p_value": 0.8174207303894088
+  },
+  "midas_s_14202.1": {
+    "correlation": -0.07474492959290267,
+    "p_value": 0.8174207303894088
+  },
+  "midas_s_57644.1": {
+    "correlation": -0.07144207271806516,
+    "p_value": 0.8253765104702374
+  },
+  "LNR_A2-18.2": {
+    "correlation": -0.07118564723133589,
+    "p_value": 0.825994817969491
+  },
+  "midas_g_9269.1": {
+    "correlation": -0.07028786092890002,
+    "p_value": 0.828160323657887
+  },
+  "midas_s_538.1": {
+    "correlation": -0.07007815737009383,
+    "p_value": 0.8286662980027452
+  },
+  "midas_g_1743.1": {
+    "correlation": 0.0640670825082023,
+    "p_value": 0.8431946004212494
+  },
+  "midas_s_876.1": {
+    "correlation": -0.06350406463828014,
+    "p_value": 0.8445577402902542
+  },
+  "Peptostreptococcales-Tissierellales.1": {
+    "correlation": 0.060507800146635496,
+    "p_value": 0.8518185924632693
+  },
+  "Leucobacter.1": {
+    "correlation": -0.059535060598387625,
+    "p_value": 0.8541781328425575
+  },
+  "Desulfovibrio.2": {
+    "correlation": 0.05159705251860261,
+    "p_value": 0.8734725274214917
+  },
+  "midas_s_94423.1": {
+    "correlation": 0.04982995306193512,
+    "p_value": 0.8777766794108113
+  },
+  "Propionicicella.1": {
+    "correlation": -0.046270670700368326,
+    "p_value": 0.8864552005114834
+  },
+  "Firmicutes.1": {
+    "correlation": -0.046270670700368326,
+    "p_value": 0.8864552005114834
+  },
+  "midas_s_5149.1": {
+    "correlation": -0.04456901560839147,
+    "p_value": 0.8906084141640902
+  },
+  "Mycobacterium.1": {
+    "correlation": -0.04179278217394055,
+    "p_value": 0.8973897196771574
+  },
+  "midas_s_90665.1": {
+    "correlation": 0.040597316344388464,
+    "p_value": 0.9003117653177245
+  },
+  "midas_s_119547.6": {
+    "correlation": -0.0402340155594192,
+    "p_value": 0.9011999985744248
+  },
+  "midas_s_100693.1": {
+    "correlation": 0.038116435793133986,
+    "p_value": 0.9063793052448936
+  },
+  "midas_s_92051.1": {
+    "correlation": 0.03572103635903258,
+    "p_value": 0.9122421490652486
+  },
+  "Syner-01.1": {
+    "correlation": -0.03559282361566794,
+    "p_value": 0.9125560710217557
+  },
+  "midas_g_824.1": {
+    "correlation": -0.03225992952145052,
+    "p_value": 0.9207203879932839
+  },
+  "midas_s_91453.1": {
+    "correlation": -0.028524169989370542,
+    "p_value": 0.9298798961588568
+  },
+  "midas_s_5574.1": {
+    "correlation": -0.028474258892534354,
+    "p_value": 0.9300023256880593
+  },
+  "Methanospirillum_hungatei.1": {
+    "correlation": -0.028031262948037528,
+    "p_value": 0.9310890342904861
+  },
+  "midas_s_1571.1": {
+    "correlation": 0.02491497653096756,
+    "p_value": 0.9387365198143007
+  },
+  "midas_s_119364.1": {
+    "correlation": -0.02491497653096756,
+    "p_value": 0.9387365198143007
+  },
+  "midas_s_38974.2": {
+    "correlation": 0.023359385790031276,
+    "p_value": 0.9425558148068427
+  },
+  "Campylobacterales.1": {
+    "correlation": 0.02279606300396757,
+    "p_value": 0.9439391659133887
+  },
+  "midas_s_8102.1": {
+    "correlation": 0.02150661968096701,
+    "p_value": 0.9471061799678696
+  },
+  "midas_s_38974.1": {
+    "correlation": -0.01779641180783397,
+    "p_value": 0.9562226317931497
+  },
+  "Thauera.2": {
+    "correlation": 0.015876016159570034,
+    "p_value": 0.9609432434797786
+  },
+  "midas_s_83426.1": {
+    "correlation": -0.015197375335978383,
+    "p_value": 0.9626117238921328
+  },
+  "midas_s_95280.1": {
+    "correlation": -0.014762660488868533,
+    "p_value": 0.96368056995518
+  },
+  "midas_g_72899.1": {
+    "correlation": 0.007938008079785017,
+    "p_value": 0.9804666993950251
+  },
+  "midas_s_76790.1": {
+    "correlation": -0.005348281873006976,
+    "p_value": 0.9868387145403358
+  },
+  "midas_s_36575.1": {
+    "correlation": 0.0,
+    "p_value": 1.0
+  },
+  "midas_s_46586.2": {
+    "correlation": 0.0,
+    "p_value": 1.0
+  },
+  "midas_s_46673.1": {
+    "correlation": 0.0,
+    "p_value": 1.0
+  }
+}
