@@ -45,9 +45,9 @@ and 6 consume.
   positive-ρ subgraph (`RESOLUTION = 1.0`, seed 42); communities with `MIN_MODULE_SIZE
   = 5` ASVs each become one tight cluster. Every module is packed as a compact
   sunflower disk (most-abundant members centred) and placed on a grid from the centre
-  outwards (largest module in the middle), with convex-hull shading; within-module
-  edges are emphasised and cross-module edges faded so each cluster stands apart. These
-  parameters give **8 multi-organismal modules** (sizes 32, 24, 14, 10, 6, 5, 5, 5;
+  outwards (largest module in the middle), with convex-hull shading delineating each
+  cluster (all edges share the same styling: width proportional to |ρ| and a uniform
+  opacity). These parameters give **8 multi-organismal modules** (sizes 32, 24, 14, 10, 6, 5, 5, 5;
   Q = 0.642); smaller co-occurring pairs/triplets and negative-only isolates sit on a
   ring around the grid. Membership is written to `network_module_membership.json`.
 - **All-vs-all operational correlation** — unlike the reference (which wired in six

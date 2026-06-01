@@ -157,15 +157,10 @@ def main():
     # --- render ---
     norm = mcolors.TwoSlopeNorm(vmin=-1, vcenter=0, vmax=1)
     cmap = plt.get_cmap("coolwarm_r")
-    # emphasise within-module edges; fade cross-module edges so the clusters stand out
-    node_module = {n: mi for mi, comm in enumerate(modules) for n in comm}
-    edges = list(G.edges(data=True))
+    # all edges share the same criteria: width = 3*|rho|, colour = colormap(rho), uniform opacity
+    edges = G.edges(data=True)
     edge_widths = [3 * d["weight"] for _, _, d in edges]
-    edge_colors = []
-    for u, v, d in edges:
-        r, g, b, _ = cmap(norm(d["rho"]))
-        same = node_module.get(u) is not None and node_module.get(u) == node_module.get(v)
-        edge_colors.append((r, g, b, 0.9 if same else 0.12))
+    edge_colors = [cmap(norm(d["rho"])) for _, _, d in edges]
 
     width, height = 40, 30
     fig, ax = plt.subplots(figsize=(width, height))
@@ -177,7 +172,7 @@ def main():
     node_sizes = [scale * compressor(mean_rel_abund.get(n, 0)) for n in G.nodes()]
     node_colors = [taxa_color_map.get(iterativeID_level.get(n, "Unknown"), "lightgray") for n in G.nodes()]
     nx.draw_networkx_nodes(G, pos, node_size=node_sizes, node_color=node_colors, alpha=0.9, ax=ax)
-    nx.draw_networkx_edges(G, pos, width=edge_widths, edge_color=edge_colors, ax=ax)
+    nx.draw_networkx_edges(G, pos, width=edge_widths, edge_color=edge_colors, alpha=0.85, ax=ax)
 
     LABEL_MIN_ABUND = 0.002
     for n, (x, y) in pos.items():
@@ -192,7 +187,7 @@ def main():
 
     sm = cm.ScalarMappable(cmap=cmap, norm=norm)
     sm.set_array([])
-    cbar = plt.colorbar(sm, ax=ax, shrink=0.6, pad=0.02)
+    cbar = plt.colorbar(sm, ax=ax, shrink=0.6, pad=0.16)   # pushed right, clear of node labels
     cbar.set_label(r"Spearman $\rho$", fontsize=10 * (width / 10))
     cbar.ax.tick_params(labelsize=8 * (width / 10), length=8, width=2)
 
@@ -216,7 +211,8 @@ def main():
     bacteria_patches = [mpatches.Patch(color=taxa_color_map[p], label=p) for p in bacteria_phyla if p in taxa_color_map]
     ax.legend(handles=[header_patch("Archaea")] + archaea_patches + [header_patch("Bacteria")] + bacteria_patches,
               title="Taxonomic " + LEVEL, title_fontsize=8 * (width / 10), loc="lower left",
-              bbox_to_anchor=(-0.24, 0.1), fontsize=7 * (width / 10), frameon=True)
+              bbox_to_anchor=(0.0, 0.0), bbox_transform=fig.transFigure,   # bottom edge at figure bottom
+              fontsize=7 * (width / 10), frameon=True)
     ax.axis("off")
     plt.tight_layout()
 
@@ -273,7 +269,7 @@ def main():
                + f"modules = {len(modules)} (size >= {MIN_MODULE_SIZE})" + "\n"
                + f"sizes: {[len(c) for c in modules]}" + "\n"
                + f"peripheral nodes = {len(periphery)}")
-    ax.text(-0.10, 0.7, summary, transform=ax.transAxes, fontsize=8 * (width / 10), ha="left", va="bottom",
+    ax.text(0.0, 1.0, summary, transform=fig.transFigure, fontsize=8 * (width / 10), ha="left", va="top",
             bbox=dict(boxstyle="round,pad=0.5", facecolor="white", edgecolor="black", alpha=0.85, linewidth=1.5))
 
     out = REPO / "cooccurrence_network_p_value_FDR_grid_layout.png"
