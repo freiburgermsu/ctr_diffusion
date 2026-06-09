@@ -7,9 +7,16 @@ Reproduces, for the **ctr_diffusion** dataset, four figures that exist in
 |---|---|
 | Co-occurrence network (spring layout) | `cooccurrence_network_p_value_FDR.png` |
 | Co-occurrence network (grid layout + Louvain modules) | `cooccurrence_network_p_value_FDR_grid_layout.png` |
-| Top-10 ASV abundance heatmap | `abundance_heatmaps/top_10_asvs_(%_abundance).png` |
-| ASV-vs-ASV abundance correlation triangle | `abundance_heatmaps/abundance_correlatons_one_triangle.png` |
+| Top-10 ASV abundance heatmap | `abundance_heatmaps/top_10_asvs_(%_abundance).png` (+ `_root`) |
+| ASV-vs-ASV abundance correlation triangle | `abundance_heatmaps/abundance_correlatons_one_triangle.png` (+ `_root`) |
 | All operational params vs ASV abundances | `correlations_heatmap_reduced.png` |
+
+Each abundance heatmap is written twice: the **ASV-level** version (rows labelled
+`Methanobacterium.3` etc.) and a **`_root`** version that collapses ASVs to their root
+name (the iterativeID without its numeric suffix — `Methanobacterium.3` &rarr;
+`Methanobacterium`), summing the relative abundances of every ASV sharing that root
+name. Both versions colour Proteobacteria by class with the suffix stripped (`Alpha`,
+`Gamma`).
 
 ## Inputs (this repo only)
 

@@ -27,6 +27,6 @@ echo "[7/8] operational correlation heatmap";      "$PY" "$HERE/07_figure_operat
 echo "done. figures:"
 echo "  cooccurrence_network_p_value_FDR.png"
 echo "  cooccurrence_network_p_value_FDR_grid_layout.png"
-echo "  abundance_heatmaps/top_10_asvs_(%_abundance).png"
-echo "  abundance_heatmaps/abundance_correlatons_one_triangle.png"
+echo "  abundance_heatmaps/top_10_asvs_(%_abundance).png            (+ _root.png)"
+echo "  abundance_heatmaps/abundance_correlatons_one_triangle.png  (+ _root.png)"
 echo "  correlations_heatmap_reduced.png"

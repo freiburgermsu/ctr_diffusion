@@ -60,6 +60,41 @@ def is_archaea(phylum):
     return any(m in p for m in ARCHAEA_MARKERS)
 
 
+PROTEO = "Proteobacteria"
+
+
+def proteo_label(phylum, klass):
+    """Display label for colouring/legends: the phylum, except Proteobacteria, which
+    is shown as its class with the trailing 'proteobacteria' stripped
+    (Alphaproteobacteria -> Alpha). Falls back to 'Proteobacteria' if the class is
+    missing."""
+    if phylum == PROTEO:
+        k = "" if klass is None else str(klass).strip()
+        if k and k.lower() not in ("nan", "none", "unknown", ""):
+            return k[:-len("proteobacteria")] if k.lower().endswith("proteobacteria") else k
+    return phylum
+
+
+def _lighten(color, factor):
+    import colorsys
+    import matplotlib.colors as mcolors
+    h, l, s = colorsys.rgb_to_hls(*mcolors.to_rgb(color))
+    return colorsys.hls_to_rgb(h, max(0.0, min(1.0, l * factor)), s)
+
+
+def group_color_map(phylum_color_map, proteo_classes):
+    """{display_group: color}. Non-Proteobacteria phyla keep their existing colour;
+    each Proteobacteria class gets a distinct lightness shade of the Proteobacteria
+    base colour, labelled with the suffix stripped (Alpha, Gamma, ...)."""
+    groups = {p: c for p, c in phylum_color_map.items() if p != PROTEO}
+    base = phylum_color_map.get(PROTEO, "tab:purple")
+    classes = sorted(c for c in proteo_classes if c and str(c).lower() not in ("nan", "none", ""))
+    n = max(len(classes), 1)
+    for i, cls in enumerate(classes):
+        groups[proteo_label(PROTEO, cls)] = _lighten(base, 0.6 + 0.8 * i / max(n - 1, 1))
+    return groups
+
+
 def load_json(path):
     with open(path) as fh:
         return load(fh)

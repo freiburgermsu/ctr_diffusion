@@ -24,7 +24,8 @@ from scipy.stats import spearmanr
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _common import (REPO, MODEL_INPUTS, HEATMAP_DIR, load_json, load_sample_days,
-                     ORGANISMS_TO_HIGHLIGHT, is_archaea, CORR_MIN_DAY)
+                     ORGANISMS_TO_HIGHLIGHT, is_archaea, CORR_MIN_DAY,
+                     proteo_label, group_color_map)
 
 LEVEL_3 = "Genus"
 DEFAULT_COLOR = "lightgray"
@@ -40,7 +41,7 @@ def corr_pvalues(df):
     return pvals
 
 
-def main():
+def make(root=False):
     sample_days = load_sample_days(CORR_MIN_DAY)
     iterativeIDs = load_json(MODEL_INPUTS / "iterativeIDs.json")
     iterativeID_color_map = load_json(REPO / "iterativeID_color_map.json")
@@ -55,14 +56,21 @@ def main():
     df = df.drop(df.index.difference(sample_days.keys()))
     df.columns = [iterativeIDs.get(c, c) for c in df.columns]
     df = df.drop([c for c in df.columns if c not in connected], axis=1)
+    if root:
+        # collapse ASVs to their root name (drop the numeric suffix), summing abundances
+        df.columns = [c.split(".")[0] for c in df.columns]
+        df = df.T.groupby(level=0).sum().T
     df = df.drop([c for c in df.columns if df[c].max() < 0.0005], axis=1)
-    print(f"abundance-correlation matrix: {df.shape[1]} ASVs x {df.shape[0]} samples")
+    print(f"abundance-correlation matrix ({'root' if root else 'ASV'}): "
+          f"{df.shape[1]} {'root names' if root else 'ASVs'} x {df.shape[0]} samples")
 
     corr = df.corr("spearman")
     pval = corr_pvalues(df)
 
-    # taxonomy strings (Kingdom|..|Genus) keyed by iterativeID
+    # taxonomy strings (Kingdom|..|Genus) keyed by the grouping key (iterativeID or root name)
     tax_by_id = {iterativeIDs.get(k, k): v for k, v in load_json(MODEL_INPUTS / "taxonomy.json").items()}
+    if root:
+        tax_by_id = {iid.split(".")[0]: t for iid, t in tax_by_id.items()}
     taxonomies = {}
     for col in df.columns:
         content = tax_by_id.get(col)
@@ -71,22 +79,25 @@ def main():
         else:
             taxonomies[col] = f"Unknown|{col}"
 
-    # Proteobacteria class shading, then iterativeID / genus colours
-    def lighten(c, factor):
-        h, l, s = colorsys.rgb_to_hls(*mcolors.to_rgb(c))
-        return colorsys.hls_to_rgb(h, max(0.0, min(1.0, l * factor)), s)
+    # display group per ASV: phylum, but Proteobacteria split into its class (Alpha, Gamma),
+    # each a distinct shade of the Proteobacteria base colour
+    phylum_color_map = load_json(REPO / "Phylum_color_map.json")
 
-    proteo_base = iterativeID_color_map.get("Proteobacteria", "tab:purple")
-    proteo_classes = sorted({taxonomies[i].split("|")[2] for i in df.columns
-                             if len(taxonomies[i].split("|")) >= 3 and taxonomies[i].split("|")[1] == "Proteobacteria"})
-    n = max(len(proteo_classes), 1)
-    proteo_class_color = {cls: lighten(proteo_base, 0.6 + 0.8 * i / max(n - 1, 1))
-                          for i, cls in enumerate(proteo_classes)}
+    def asv_group(idx):
+        parts = str(taxonomies.get(idx, "")).split("|")
+        ph = parts[1] if len(parts) > 1 else ""
+        if ph in ("", "None", "Unknown", "nan"):
+            return None
+        return proteo_label(ph, parts[2] if len(parts) > 2 else None)
+
+    proteo_classes = {taxonomies[i].split("|")[2] for i in df.columns
+                      if len(taxonomies[i].split("|")) >= 3 and taxonomies[i].split("|")[1] == "Proteobacteria"}
+    gcolors = group_color_map(phylum_color_map, proteo_classes)
 
     def lookup(idx):
-        parts = str(taxonomies.get(idx, "")).split("|")
-        if len(parts) >= 3 and parts[1] == "Proteobacteria":
-            return proteo_class_color.get(parts[2], proteo_base)
+        g = asv_group(idx)
+        if g and g in gcolors:
+            return gcolors[g]
         if idx in iterativeID_color_map:
             return iterativeID_color_map[idx]
         if idx in genera_color_map:
@@ -174,13 +185,14 @@ def main():
     cm.ax_heatmap.set_xlabel("Member ASVs", fontsize=50)
     cm.ax_heatmap.set_ylabel("Member ASVs", fontsize=50)
 
-    # phylum legend (Archaea / Bacteria)
+    # legend by display group (Archaea / Bacteria; Proteobacteria shown as its classes)
     phylum_color, shown = {}, set()
     for idx in corr.index:
-        parts = str(taxonomies.get(idx, "")).split("|")
-        if len(parts) >= 2 and parts[1] not in ("None", "", "Unknown", "nan"):
-            phylum_color.setdefault(parts[1], row_colors.get(idx))
-            shown.add(parts[1])
+        g = asv_group(idx)
+        if g is None:
+            continue
+        phylum_color.setdefault(g, row_colors.get(idx))
+        shown.add(g)
     archaea = sorted(p for p in shown if is_archaea(p))
     bacteria = sorted(p for p in shown if not is_archaea(p))
 
@@ -197,10 +209,11 @@ def main():
                          loc="lower left", bbox_to_anchor=(0.5, 0.6), fontsize=7 * (fig_width / 10), frameon=True)
 
     HEATMAP_DIR.mkdir(parents=True, exist_ok=True)
-    out = HEATMAP_DIR / "abundance_correlatons_one_triangle.png"
+    out = HEATMAP_DIR / f"abundance_correlatons_one_triangle{'_root' if root else ''}.png"
     cm.figure.savefig(out, dpi=300, bbox_inches="tight")
     print(f"wrote {out}")
 
 
 if __name__ == "__main__":
-    main()
+    make(root=False)   # ASV level
+    make(root=True)    # collapsed to root names

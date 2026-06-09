@@ -26,7 +26,8 @@ import sigfig
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _common import (REPO, MODEL_INPUTS, HEATMAP_DIR, TAXO_LEVELS, load_json,
-                     load_sample_days, ORGANISMS_TO_HIGHLIGHT, is_archaea, taxonomy_linkage)
+                     load_sample_days, ORGANISMS_TO_HIGHLIGHT, is_archaea, taxonomy_linkage,
+                     proteo_label, group_color_map)
 
 TOP_NUM = 10
 GENUS = "Genus"
@@ -36,7 +37,10 @@ def shannon_index(abundances):
     return -sum(a * log(a) for a in abundances if a > 0)
 
 
-def build_heatmap(df, taxonomies, title, inlayed_data, color_map, genera_color_map, id_levels):
+def build_heatmap(df, taxonomies, title, inlayed_data, color_map, genera_color_map, id_levels,
+                  phylum_color_map, suffix=""):
+    # rank level keyed by root name so italics work for both ASV and root-name labels
+    id_level_short = {k.split(".")[0]: v for k, v in id_levels.items()}
     new_cmap = LinearSegmentedColormap.from_list("NewMap", [(0.0, "aliceblue"), (0.25, "lightblue"), (1.0, "navy")])
     new_cmap.set_bad("aliceblue")
     vmin, vmax = df.min().min(), df.max().max()
@@ -45,7 +49,23 @@ def build_heatmap(df, taxonomies, title, inlayed_data, color_map, genera_color_m
     norm = TwoSlopeNorm(vmin=vmin, vcenter=vcenter, vmax=vmax)
     DEFAULT_COLOR = "lightgray"
 
+    # display group per ASV: phylum, but Proteobacteria split into its class (Alpha, Gamma)
+    def asv_group(idx):
+        parts = str(taxonomies.get(idx, "")).split("|")
+        ph = parts[1] if len(parts) > 1 else ""
+        if ph in ("", "None", "Unknown", "nan"):
+            return None
+        return proteo_label(ph, parts[2] if len(parts) > 2 else None)
+
+    proteo_classes = {str(taxonomies.get(idx, "")).split("|")[2] for idx in df.index
+                      if len(str(taxonomies.get(idx, "")).split("|")) > 2
+                      and str(taxonomies.get(idx, "")).split("|")[1] == "Proteobacteria"}
+    gcolors = group_color_map(phylum_color_map, proteo_classes)
+
     def lookup(idx):
+        g = asv_group(idx)
+        if g and g in gcolors:
+            return gcolors[g]
         if idx in color_map:
             return color_map[idx]
         if idx in genera_color_map:
@@ -124,7 +144,7 @@ def build_heatmap(df, taxonomies, title, inlayed_data, color_map, genera_color_m
         text = label.get_text()
         if any(x in text for x in ORGANISMS_TO_HIGHLIGHT):
             label.set_fontweight("bold")
-        if id_levels.get(text) == "Genus":
+        if id_level_short.get(text.split(".")[0]) == "Genus":
             label.set_fontstyle("italic")
 
     hm_pos = cm.ax_heatmap.get_position()
@@ -133,18 +153,15 @@ def build_heatmap(df, taxonomies, title, inlayed_data, color_map, genera_color_m
     cm.ax_row_colors.set_position([hm_pos.x1 + 0.005, hm_pos.y0, strip_w, hm_pos.height])
     cm.ax_heatmap.tick_params(axis="y", pad=strip_w * fig_w * 72 + 12)
 
-    # phylum legend (Archaea / Bacteria grouped)
+    # legend by display group (Archaea / Bacteria; Proteobacteria shown as its classes)
     phylum_color = {}
     for idx in df.index:
-        parts = str(taxonomies.get(idx, "")).split("|")
-        if len(parts) < 2:
-            continue
-        phylum = parts[1]
-        if phylum in ("None", "", "Unknown", "nan"):
+        g = asv_group(idx)
+        if g is None:
             continue
         c = row_colors.get(idx)
         if c is not None:
-            phylum_color.setdefault(phylum, c)
+            phylum_color.setdefault(g, c)
     archaea = sorted(p for p in phylum_color if is_archaea(p))
     bacteria = sorted(p for p in phylum_color if not is_archaea(p))
     handles = []
@@ -162,7 +179,7 @@ def build_heatmap(df, taxonomies, title, inlayed_data, color_map, genera_color_m
         spine.set_linewidth(1)
 
     HEATMAP_DIR.mkdir(parents=True, exist_ok=True)
-    stem = title.lower().replace(" ", "_")
+    stem = title.lower().replace(" ", "_") + suffix
     cm.figure.savefig(HEATMAP_DIR / f"{stem}.png", bbox_inches="tight", dpi=800)
     cm.figure.savefig(HEATMAP_DIR / f"{stem}.svg", bbox_inches="tight")
     print(f"wrote {HEATMAP_DIR / (stem + '.png')}  ({df.shape[0]} ASVs x {df.shape[1]} timepoints)")
@@ -175,6 +192,7 @@ def main():
     color_map = load_json(REPO / "iterativeID_color_map.json")
     genera_color_map = {i.split(".")[0]: v for i, v in color_map.items()}
     id_levels = load_json(MODEL_INPUTS / "iterativeID_levels.json")
+    phylum_color_map = load_json(REPO / "Phylum_color_map.json")
 
     total = pd.read_csv(MODEL_INPUTS / "total.csv").set_index("seq")
     total["rel_ab"] = total["rel_ab"] / 100.0
@@ -187,40 +205,42 @@ def main():
         if sample in abundances:
             shannon_by_day[day] = shannon_index(list(abundances[sample].values()))
 
-    # aggregate relative abundance by (day, iterativeID)
-    per_day, taxonomies = {}, {}
-    for seq, row in total.iterrows():
-        day = sample_days.get(row["sample"])
-        if day is None:
-            continue
-        uid = iterativeIDs.get(seq)
-        taxonomies.setdefault(uid, "|".join(str(row[l]) for l in TAXO_LEVELS
-                                            if TAXO_LEVELS.index(l) <= TAXO_LEVELS.index(GENUS)))
-        per_day.setdefault(day, {}).setdefault(uid, 0.0)
-        per_day[day][uid] += row["rel_ab"]
+    # Build two versions: ASV level (key = iterativeID, e.g. Methanobacterium.3) and
+    # root-name level (key = iterativeID without the numeric suffix, e.g. Methanobacterium),
+    # which sums the relative abundances of every ASV sharing that root name.
+    for root in (False, True):
+        per_day, taxonomies = {}, {}
+        for seq, row in total.iterrows():
+            day = sample_days.get(row["sample"])
+            if day is None:
+                continue
+            uid = iterativeIDs.get(seq)
+            if uid is None:
+                continue
+            key = uid.split(".")[0] if root else uid
+            taxonomies.setdefault(key, "|".join(str(row[l]) for l in TAXO_LEVELS
+                                                if TAXO_LEVELS.index(l) <= TAXO_LEVELS.index(GENUS)))
+            per_day.setdefault(day, {}).setdefault(key, 0.0)
+            per_day[day][key] += row["rel_ab"]
 
-    nonzero_per_day = {day: dict(sorted({k: v for k, v in d.items() if v > 0}.items(),
-                                        key=lambda kv: kv[1], reverse=True))
-                       for day, d in per_day.items()}
+        nonzero_per_day = {day: dict(sorted({k: v for k, v in d.items() if v > 0}.items(),
+                                            key=lambda kv: kv[1], reverse=True))
+                           for day, d in per_day.items()}
+        top_union = set()
+        for d in nonzero_per_day.values():
+            top_union.update(list(d.keys())[:TOP_NUM])
+        top_per_day = {day: {org: log10(v) for org, v in d.items() if org in top_union}
+                       for day, d in nonzero_per_day.items()}
+        tax = {org: t for org, t in taxonomies.items() if org in top_union}
 
-    top_union = set()
-    for d in nonzero_per_day.values():
-        top_union.update(list(d.keys())[:TOP_NUM])
+        ordered_days = sorted(top_per_day.keys())
+        df = DataFrame(top_per_day)[ordered_days].astype(float).replace([inf, -inf], nan)
+        taxonomy_series = Series({idx: tax.get(idx, f"Unknown|{idx}") for idx in df.index})
+        inlayed = {str(d): shannon_by_day[d] for d in df.columns if d in shannon_by_day}
 
-    top_per_day = {day: {org: log10(v) for org, v in d.items() if org in top_union}
-                   for day, d in nonzero_per_day.items()}
-    taxonomies = {org: t for org, t in taxonomies.items() if org in top_union}
-
-    # columns in strict chronological order (numeric day sort)
-    ordered_days = sorted(top_per_day.keys())
-    print(f"x-axis day order: {ordered_days}")
-    df = DataFrame(top_per_day)[ordered_days].astype(float).replace([inf, -inf], nan)
-    taxonomy_series = Series({idx: taxonomies.get(idx, f"Unknown|{idx}") for idx in df.index})
-
-    inlayed = {str(d): shannon_by_day[d] for d in df.columns if d in shannon_by_day}
-
-    build_heatmap(df, taxonomy_series, f"Top {TOP_NUM} ASVs (% abundance)", inlayed,
-                  color_map, genera_color_map, id_levels)
+        build_heatmap(df, taxonomy_series, f"Top {TOP_NUM} ASVs (% abundance)", inlayed,
+                      color_map, genera_color_map, id_levels, phylum_color_map,
+                      suffix="_root" if root else "")
 
 
 if __name__ == "__main__":
